@@ -8,6 +8,7 @@ const authentication = async (req, res, next) => {
 
     process.stdout.write("In Middleware...... ")
 
+    console.log(accessToken)
 
     if (!accessToken) {
         return res.status(401).json({
@@ -18,6 +19,8 @@ const authentication = async (req, res, next) => {
 
     try {
         const userData = await jwtServices.verifyAccessToken(accessToken)
+        
+        console.log(userData)
 
         if (userData) {
             req.user = userData

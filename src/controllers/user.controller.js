@@ -301,11 +301,9 @@ class UserControllers {
          */
 
         try {
-            console.log(userData.token)
-            const isTokenExist = await TOKEN.findOne({ userId: userData.token, token: oldRefreshToken })
+            const isTokenExist = await TOKEN.findOne({ userId: userData.token })
 
-
-            if (!isTokenExist) {
+            if (!isTokenExist || isTokenExist.token !== oldRefreshToken) {
                 return res.json({
                     message: "Invalid Token"
                 })
