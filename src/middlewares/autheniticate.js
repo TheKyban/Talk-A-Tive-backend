@@ -6,9 +6,7 @@ const authentication = async (req, res, next) => {
     */
     const { accessToken } = req.cookies
 
-    process.stdout.write("In Middleware...... ")
-
-    console.log(accessToken)
+    console.log("You are in Middle")
 
     if (!accessToken) {
         return res.status(401).json({
@@ -19,14 +17,12 @@ const authentication = async (req, res, next) => {
 
     try {
         const userData = await jwtServices.verifyAccessToken(accessToken)
-        
-        console.log(userData)
+
 
         if (userData) {
             req.user = userData
 
-            process.stdout.write("calling next....")
-
+            console.log("next ==>")
             next()
         }
 

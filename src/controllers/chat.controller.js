@@ -53,6 +53,46 @@ class ChatControllers {
             })
         }
     }
+
+    async findChats(req, res) {
+
+        try {
+            const userId = req.user.token
+            const chats = await ChatModel.find({ users: { $all: [userId] } },)
+                .populate("users", "-password")
+
+            let allChats = []
+
+            chats.map(chat => {
+                const chatId = chat._id
+                let user = chat.users.filter(user => {
+                    return user._id != userId
+                })
+
+                allChats.push({
+                    _id: user[0]._id,
+                    name: user[0].name,
+                    email: user[0].email,
+                    picture: user[0].picture,
+                    chatId: chatId
+                })
+
+            })
+
+
+
+            res.json({
+                data: allChats,
+                success: true
+            })
+        } catch (error) {
+            console.log(error)
+
+            res.json({
+                message: "db error"
+            })
+        }
+    }
 }
 
 export default new ChatControllers()
