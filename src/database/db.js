@@ -9,7 +9,8 @@ const DB_CONNECT = () => {
             .then(() => {
                 console.log("DATABASE CONNECTED....")
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err)
                 console.log("DATABASE NOT CONNECTED....")
             })
 
