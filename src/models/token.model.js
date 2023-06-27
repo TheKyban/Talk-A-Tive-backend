@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
     },
 })
 
-userSchema.index({ email: 1, sweepstakes_id: 1 }, { unique: true });
+// userSchema.index({ email: 1, sweepstakes_id: 1 }, { unique: true });
 
 const TOKEN = mongoose.model("token", userSchema)
 export default TOKEN

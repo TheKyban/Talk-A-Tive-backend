@@ -6,7 +6,6 @@ const authentication = async (req, res, next) => {
     */
     const { accessToken } = req.cookies
 
-    console.log("You are in Middle")
 
     if (!accessToken) {
         return res.status(401).json({
@@ -22,7 +21,6 @@ const authentication = async (req, res, next) => {
         if (userData) {
             req.user = userData
 
-            console.log("next ==>")
             next()
         }
 
