@@ -358,7 +358,7 @@ class UserControllers {
 
 	async findUsers(req, res) {
 		try {
-			const { search } = req.query;
+			const { search } = req.body;
 			const currentUser = req.user.token;
 			if (!search) {
 				res.json({

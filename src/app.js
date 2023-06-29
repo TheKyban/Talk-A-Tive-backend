@@ -31,11 +31,7 @@ export const io = new Server(server, {
  */
 app.use(
 	cors({
-		origin: [
-			"http://localhost:3000",
-			"http://127.0.0.1:5501",
-			"https://talk-a-tive-seven.vercel.app",
-		],
+		origin: ["http://localhost:3000","http://127.0.0.1:5501"],
 		credentials: true,
 		methods: ["POST", "GET", "PUT"],
 	}),

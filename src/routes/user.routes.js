@@ -37,6 +37,6 @@ router.get("/refresh", userController.refresh)
  * Finduser
  */
 
-router.get("/finduser",authentication,userController.findUsers)
+router.post("/finduser",authentication,userController.findUsers)
 
 export default router

@@ -38,14 +38,14 @@ class Messagecontroller {
 			if (!chatId) {
 				return res.json({
 					success: false,
-					message: "provide chatId",
+					message: "not provided chatId",
 				});
 			}
 
 			const messages = await Message.find({ chatId }).populate("userId");
 
 			res.json({
-				messages: messages,
+				messages: messages ? messages : [],
 			});
 		} catch (error) {
 			res.send("some db error");
