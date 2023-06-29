@@ -38,6 +38,7 @@ app.use(
 		],
 		credentials: true,
 		methods: ["POST", "GET", "PUT"],
+		allowedHeaders: ["Content-Type", "Authorization"],
 	}),
 );
 
