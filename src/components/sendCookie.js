@@ -1,9 +1,9 @@
 const sendCookie = (res, tokenName, token, expiry) => {
 	return res.cookie(tokenName, token, {
 		maxAge: expiry,
-		// secure: process.env.DEVELOPMENT === "true" ? false : true,
-		secure: true,
 		httpOnly: true,
+		secure: process.env.DEVELOPMENT === "true" ? false : true,
+		sameSite: process.env.DEVELOPMENT === "true" ? "lax" : "none",
 	});
 };
 
