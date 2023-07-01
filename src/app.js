@@ -22,7 +22,10 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
 	cors: {
-		origin: "https://talk-a-tive-seven.vercel.app",
+		origin: [
+			"http://localhost:3000",
+			"https://talk-a-tive-seven.vercel.app",
+		],
 		credentials: true,
 		methods: ["POST", "GET", "PUT"],
 		allowedHeaders: ["Content-Type", "Authorization"],
